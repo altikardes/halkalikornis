@@ -60,7 +60,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/905309264830" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-200 hover:text-white no-underline">
+                <a href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-200 hover:text-white no-underline">
                   <span>💬</span> WhatsApp ile Yaz
                 </a>
               </li>

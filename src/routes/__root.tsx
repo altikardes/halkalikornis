@@ -89,7 +89,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         {/* Sticky CTA Buttons */}
         <div className="fixed bottom-4 right-4 z-50 md:hidden">
           <a
-            href="https://wa.me/905309264830"
+            href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-green-500 text-white px-4 py-3 rounded-full shadow-xl font-semibold text-sm no-underline hover:bg-green-600 transition-colors"

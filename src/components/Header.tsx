@@ -54,7 +54,7 @@ export function Header() {
             📞 Ara
           </a>
           <a
-            href="https://wa.me/905309264830"
+            href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 bg-green-500 text-white px-3 py-2 rounded font-semibold text-sm hover:bg-green-600 transition-colors no-underline"
@@ -100,7 +100,7 @@ export function Header() {
               📞 Hemen Ara
             </a>
             <a
-              href="https://wa.me/905309264830"
+              href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 text-center bg-green-500 text-white py-2 rounded font-semibold text-sm no-underline"

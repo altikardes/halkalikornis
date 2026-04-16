@@ -95,7 +95,7 @@ function IletisimPage() {
                 <div>
                   <h3 className="font-bold text-[#1A2E4A] mb-1">WhatsApp</h3>
                   <a
-                    href="https://wa.me/905309264830"
+                    href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-green-600 hover:text-green-800 no-underline font-medium"
