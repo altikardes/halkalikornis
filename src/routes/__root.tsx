@@ -1,4 +1,4 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Outlet, createRootRoute } from '@tanstack/react-router'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
@@ -73,34 +73,30 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  shellComponent: RootDocument,
+  component: RootComponent,
 })
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootComponent() {
   return (
-    <html lang="tr">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <HeadContent />
-      </head>
-      <body className="bg-white text-gray-800">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        {/* Sticky CTA Buttons */}
-        <div className="fixed bottom-4 right-4 z-50 md:hidden">
-          <a
-            href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-green-500 text-white px-4 py-3 rounded-full shadow-xl font-semibold text-sm no-underline hover:bg-green-600 transition-colors"
-            aria-label="WhatsApp ile iletişim"
-          >
-            💬 WhatsApp
-          </a>
-        </div>
-        <Scripts />
-      </body>
-    </html>
+    <div className="bg-white text-gray-800">
+      <HeadContent />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+      {/* Sticky CTA Buttons */}
+      <div className="fixed bottom-4 right-4 z-50 md:hidden">
+        <a
+          href="https://wa.me/905309264830?text=Merhaba%20korni%C5%9F%20montaj%C4%B1%20i%C3%A7in%20bilgi%20almak%20istiyorum"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 bg-green-500 text-white px-4 py-3 rounded-full shadow-xl font-semibold text-sm no-underline hover:bg-green-600 transition-colors"
+          aria-label="WhatsApp ile iletişim"
+        >
+          💬 WhatsApp
+        </a>
+      </div>
+    </div>
   )
 }
