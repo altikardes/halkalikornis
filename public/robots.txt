@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://halkalikornis.com.tr/sitemap.xml
