@@ -80,6 +80,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="tr">
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <HeadContent />
       </head>
       <body className="bg-white text-gray-800">
