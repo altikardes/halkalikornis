@@ -68,8 +68,8 @@ function HomePage() {
           </div>
           <div className="overflow-hidden rounded-3xl bg-white shadow-xl">
             <img
-              src="/images/1.jpg"
-              alt="İstanbul'da profesyonel korniş montajı yapılan modern salon"
+              src="/images/main.webp"
+              alt="Halkalı korniş ve perde montaj hizmeti"
               className="h-full min-h-[280px] w-full object-cover"
               loading="eager"
             />
