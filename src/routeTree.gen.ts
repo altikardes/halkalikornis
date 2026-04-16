@@ -11,9 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UrunlerRouteImport } from './routes/urunler'
 import { Route as PratikBilgilerRouteImport } from './routes/pratik-bilgiler'
+import { Route as KucukcekmeceKornisMontajiRouteImport } from './routes/kucukcekmece-kornis-montaji'
 import { Route as IletisimRouteImport } from './routes/iletisim'
+import { Route as IkitelliKornisMontajiRouteImport } from './routes/ikitelli-kornis-montaji'
 import { Route as HizmetlerRouteImport } from './routes/hizmetler'
 import { Route as HizmetBolgeleriRouteImport } from './routes/hizmet-bolgeleri'
+import { Route as HalkaliKornisMontajiRouteImport } from './routes/halkali-kornis-montaji'
+import { Route as BasaksehirPerdeMontajiRouteImport } from './routes/basaksehir-perde-montaji'
+import { Route as BahcesehirPerdeMontajiRouteImport } from './routes/bahcesehir-perde-montaji'
+import { Route as BagcilarPerdeMontajiRouteImport } from './routes/bagcilar-perde-montaji'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 import { Route as HizmetBolgeleriBolgeRouteImport } from './routes/hizmet-bolgeleri/$bolge'
@@ -28,9 +34,20 @@ const PratikBilgilerRoute = PratikBilgilerRouteImport.update({
   path: '/pratik-bilgiler',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KucukcekmeceKornisMontajiRoute =
+  KucukcekmeceKornisMontajiRouteImport.update({
+    id: '/kucukcekmece-kornis-montaji',
+    path: '/kucukcekmece-kornis-montaji',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IletisimRoute = IletisimRouteImport.update({
   id: '/iletisim',
   path: '/iletisim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IkitelliKornisMontajiRoute = IkitelliKornisMontajiRouteImport.update({
+  id: '/ikitelli-kornis-montaji',
+  path: '/ikitelli-kornis-montaji',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HizmetlerRoute = HizmetlerRouteImport.update({
@@ -41,6 +58,26 @@ const HizmetlerRoute = HizmetlerRouteImport.update({
 const HizmetBolgeleriRoute = HizmetBolgeleriRouteImport.update({
   id: '/hizmet-bolgeleri',
   path: '/hizmet-bolgeleri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HalkaliKornisMontajiRoute = HalkaliKornisMontajiRouteImport.update({
+  id: '/halkali-kornis-montaji',
+  path: '/halkali-kornis-montaji',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BasaksehirPerdeMontajiRoute = BasaksehirPerdeMontajiRouteImport.update({
+  id: '/basaksehir-perde-montaji',
+  path: '/basaksehir-perde-montaji',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BahcesehirPerdeMontajiRoute = BahcesehirPerdeMontajiRouteImport.update({
+  id: '/bahcesehir-perde-montaji',
+  path: '/bahcesehir-perde-montaji',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BagcilarPerdeMontajiRoute = BagcilarPerdeMontajiRouteImport.update({
+  id: '/bagcilar-perde-montaji',
+  path: '/bagcilar-perde-montaji',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,9 +98,15 @@ const HizmetBolgeleriBolgeRoute = HizmetBolgeleriBolgeRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bagcilar-perde-montaji': typeof BagcilarPerdeMontajiRoute
+  '/bahcesehir-perde-montaji': typeof BahcesehirPerdeMontajiRoute
+  '/basaksehir-perde-montaji': typeof BasaksehirPerdeMontajiRoute
+  '/halkali-kornis-montaji': typeof HalkaliKornisMontajiRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRouteWithChildren
   '/hizmetler': typeof HizmetlerRoute
+  '/ikitelli-kornis-montaji': typeof IkitelliKornisMontajiRoute
   '/iletisim': typeof IletisimRoute
+  '/kucukcekmece-kornis-montaji': typeof KucukcekmeceKornisMontajiRoute
   '/pratik-bilgiler': typeof PratikBilgilerRoute
   '/urunler': typeof UrunlerRoute
   '/hizmet-bolgeleri/$bolge': typeof HizmetBolgeleriBolgeRoute
@@ -71,9 +114,15 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bagcilar-perde-montaji': typeof BagcilarPerdeMontajiRoute
+  '/bahcesehir-perde-montaji': typeof BahcesehirPerdeMontajiRoute
+  '/basaksehir-perde-montaji': typeof BasaksehirPerdeMontajiRoute
+  '/halkali-kornis-montaji': typeof HalkaliKornisMontajiRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRouteWithChildren
   '/hizmetler': typeof HizmetlerRoute
+  '/ikitelli-kornis-montaji': typeof IkitelliKornisMontajiRoute
   '/iletisim': typeof IletisimRoute
+  '/kucukcekmece-kornis-montaji': typeof KucukcekmeceKornisMontajiRoute
   '/pratik-bilgiler': typeof PratikBilgilerRoute
   '/urunler': typeof UrunlerRoute
   '/hizmet-bolgeleri/$bolge': typeof HizmetBolgeleriBolgeRoute
@@ -82,9 +131,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bagcilar-perde-montaji': typeof BagcilarPerdeMontajiRoute
+  '/bahcesehir-perde-montaji': typeof BahcesehirPerdeMontajiRoute
+  '/basaksehir-perde-montaji': typeof BasaksehirPerdeMontajiRoute
+  '/halkali-kornis-montaji': typeof HalkaliKornisMontajiRoute
   '/hizmet-bolgeleri': typeof HizmetBolgeleriRouteWithChildren
   '/hizmetler': typeof HizmetlerRoute
+  '/ikitelli-kornis-montaji': typeof IkitelliKornisMontajiRoute
   '/iletisim': typeof IletisimRoute
+  '/kucukcekmece-kornis-montaji': typeof KucukcekmeceKornisMontajiRoute
   '/pratik-bilgiler': typeof PratikBilgilerRoute
   '/urunler': typeof UrunlerRoute
   '/hizmet-bolgeleri/$bolge': typeof HizmetBolgeleriBolgeRoute
@@ -94,9 +149,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bagcilar-perde-montaji'
+    | '/bahcesehir-perde-montaji'
+    | '/basaksehir-perde-montaji'
+    | '/halkali-kornis-montaji'
     | '/hizmet-bolgeleri'
     | '/hizmetler'
+    | '/ikitelli-kornis-montaji'
     | '/iletisim'
+    | '/kucukcekmece-kornis-montaji'
     | '/pratik-bilgiler'
     | '/urunler'
     | '/hizmet-bolgeleri/$bolge'
@@ -104,9 +165,15 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bagcilar-perde-montaji'
+    | '/bahcesehir-perde-montaji'
+    | '/basaksehir-perde-montaji'
+    | '/halkali-kornis-montaji'
     | '/hizmet-bolgeleri'
     | '/hizmetler'
+    | '/ikitelli-kornis-montaji'
     | '/iletisim'
+    | '/kucukcekmece-kornis-montaji'
     | '/pratik-bilgiler'
     | '/urunler'
     | '/hizmet-bolgeleri/$bolge'
@@ -114,9 +181,15 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/bagcilar-perde-montaji'
+    | '/bahcesehir-perde-montaji'
+    | '/basaksehir-perde-montaji'
+    | '/halkali-kornis-montaji'
     | '/hizmet-bolgeleri'
     | '/hizmetler'
+    | '/ikitelli-kornis-montaji'
     | '/iletisim'
+    | '/kucukcekmece-kornis-montaji'
     | '/pratik-bilgiler'
     | '/urunler'
     | '/hizmet-bolgeleri/$bolge'
@@ -125,9 +198,15 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BagcilarPerdeMontajiRoute: typeof BagcilarPerdeMontajiRoute
+  BahcesehirPerdeMontajiRoute: typeof BahcesehirPerdeMontajiRoute
+  BasaksehirPerdeMontajiRoute: typeof BasaksehirPerdeMontajiRoute
+  HalkaliKornisMontajiRoute: typeof HalkaliKornisMontajiRoute
   HizmetBolgeleriRoute: typeof HizmetBolgeleriRouteWithChildren
   HizmetlerRoute: typeof HizmetlerRoute
+  IkitelliKornisMontajiRoute: typeof IkitelliKornisMontajiRoute
   IletisimRoute: typeof IletisimRoute
+  KucukcekmeceKornisMontajiRoute: typeof KucukcekmeceKornisMontajiRoute
   PratikBilgilerRoute: typeof PratikBilgilerRoute
   UrunlerRoute: typeof UrunlerRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
@@ -149,11 +228,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PratikBilgilerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kucukcekmece-kornis-montaji': {
+      id: '/kucukcekmece-kornis-montaji'
+      path: '/kucukcekmece-kornis-montaji'
+      fullPath: '/kucukcekmece-kornis-montaji'
+      preLoaderRoute: typeof KucukcekmeceKornisMontajiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/iletisim': {
       id: '/iletisim'
       path: '/iletisim'
       fullPath: '/iletisim'
       preLoaderRoute: typeof IletisimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ikitelli-kornis-montaji': {
+      id: '/ikitelli-kornis-montaji'
+      path: '/ikitelli-kornis-montaji'
+      fullPath: '/ikitelli-kornis-montaji'
+      preLoaderRoute: typeof IkitelliKornisMontajiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hizmetler': {
@@ -168,6 +261,34 @@ declare module '@tanstack/react-router' {
       path: '/hizmet-bolgeleri'
       fullPath: '/hizmet-bolgeleri'
       preLoaderRoute: typeof HizmetBolgeleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/halkali-kornis-montaji': {
+      id: '/halkali-kornis-montaji'
+      path: '/halkali-kornis-montaji'
+      fullPath: '/halkali-kornis-montaji'
+      preLoaderRoute: typeof HalkaliKornisMontajiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/basaksehir-perde-montaji': {
+      id: '/basaksehir-perde-montaji'
+      path: '/basaksehir-perde-montaji'
+      fullPath: '/basaksehir-perde-montaji'
+      preLoaderRoute: typeof BasaksehirPerdeMontajiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bahcesehir-perde-montaji': {
+      id: '/bahcesehir-perde-montaji'
+      path: '/bahcesehir-perde-montaji'
+      fullPath: '/bahcesehir-perde-montaji'
+      preLoaderRoute: typeof BahcesehirPerdeMontajiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bagcilar-perde-montaji': {
+      id: '/bagcilar-perde-montaji'
+      path: '/bagcilar-perde-montaji'
+      fullPath: '/bagcilar-perde-montaji'
+      preLoaderRoute: typeof BagcilarPerdeMontajiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -208,9 +329,15 @@ const HizmetBolgeleriRouteWithChildren = HizmetBolgeleriRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BagcilarPerdeMontajiRoute: BagcilarPerdeMontajiRoute,
+  BahcesehirPerdeMontajiRoute: BahcesehirPerdeMontajiRoute,
+  BasaksehirPerdeMontajiRoute: BasaksehirPerdeMontajiRoute,
+  HalkaliKornisMontajiRoute: HalkaliKornisMontajiRoute,
   HizmetBolgeleriRoute: HizmetBolgeleriRouteWithChildren,
   HizmetlerRoute: HizmetlerRoute,
+  IkitelliKornisMontajiRoute: IkitelliKornisMontajiRoute,
   IletisimRoute: IletisimRoute,
+  KucukcekmeceKornisMontajiRoute: KucukcekmeceKornisMontajiRoute,
   PratikBilgilerRoute: PratikBilgilerRoute,
   UrunlerRoute: UrunlerRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,

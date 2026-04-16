@@ -16,47 +16,58 @@ export const Route = createFileRoute('/iletisim')({
   component: IletisimPage,
 })
 
-function encode(data: Record<string, string>) {
-  return Object.entries(data)
-    .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
-    .join('&')
-}
-
-const serviceOptions = [
-  'Perde Montajı',
-  'Korniş Montajı',
-  'Stor Perde',
-  'Jaluzi Montajı',
-  'Tül Perde',
-  'Zebra Perde',
-  'Diğer',
-]
-
 function IletisimPage() {
-  const [fields, setFields] = useState({ name: '', email: '', phone: '', service: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [fields, setFields] = useState({ name: '', phone: '', message: '' })
+  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({})
+
+  const isValidTurkishMobile = (phone: string) => {
+    if (!/^\d+$/.test(phone)) return false
+    if (phone.length !== 10 && phone.length !== 11) return false
+    if (phone.length === 11) return phone.startsWith('05')
+    return phone.startsWith('5')
+  }
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => setFields({ ...fields, [e.target.name]: e.target.value })
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    if (name === 'phone') {
+      const digitsOnly = value.replace(/\s+/g, '').replace(/\D/g, '')
+      setFields({ ...fields, phone: digitsOnly })
+    } else {
+      setFields({ ...fields, [name]: value })
+    }
+    if (errors[name as 'name' | 'phone']) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-    try {
-      await fetch('/contact-form.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...fields }),
-      })
-      setSubmitted(true)
-    } catch {
-      // still show success to user
-      setSubmitted(true)
-    } finally {
-      setLoading(false)
+    const name = fields.name.trim()
+    const phone = fields.phone.trim()
+    const message = fields.message.trim()
+    const nextErrors: { name?: string; phone?: string } = {}
+
+    if (!name) nextErrors.name = 'Ad Soyad alanı zorunludur.'
+    if (!phone || !isValidTurkishMobile(phone)) nextErrors.phone = 'Geçerli bir telefon numarası giriniz'
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors)
+      return
     }
+
+    const whatsappMessage =
+      `Merhaba, keşif için bilgi bırakıyorum.\n` +
+      `İsim: ${name}\n` +
+      `Telefon: ${phone}\n` +
+      (message ? `Mesaj: ${message}` : 'Mesaj: -')
+
+    const whatsappUrl = `https://wa.me/905309264830?text=${encodeURIComponent(whatsappMessage)}`
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setTimeout(() => {
+      window.location.href = whatsappUrl
+    }, 150)
   }
 
   return (
@@ -142,116 +153,67 @@ function IletisimPage() {
             {/* Contact Form */}
             <div className="md:col-span-3">
               <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-[#1A2E4A] mb-2">Ücretsiz Keşif Formu</h2>
-                <p className="text-gray-500 text-sm mb-6">Formu doldurun, sizi en kısa sürede arayalım.</p>
+                <h2 className="text-2xl font-bold text-[#1A2E4A] mb-2">WhatsApp ile Hızlı Keşif Talebi</h2>
+                <p className="text-gray-500 text-sm mb-6">Ad Soyad ve telefon bilginizi girin, sizi doğrudan WhatsApp ekranına yönlendirelim.</p>
 
-                {submitted ? (
-                  <div className="text-center py-12">
-                    <div className="text-5xl mb-4">✅</div>
-                    <h3 className="text-xl font-bold text-[#1A2E4A] mb-2">Mesajınız Alındı!</h3>
-                    <p className="text-gray-500">
-                      En kısa sürede sizi arayacağız. Acil durumlarda{' '}
-                      <a href="tel:+905309264830" className="text-blue-600 no-underline">
-                        hemen arayabilirsiniz
-                      </a>
-                      .
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} noValidate>
-                    <input type="hidden" name="form-name" value="contact" />
-                    <input type="hidden" name="bot-field" />
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                          Adınız Soyadınız *
-                        </label>
-                        <input
-                          id="name"
-                          type="text"
-                          name="name"
-                          value={fields.name}
-                          onChange={handleChange}
-                          required
-                          placeholder="Ahmet Yılmaz"
-                          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                          Telefon *
-                        </label>
-                        <input
-                          id="phone"
-                          type="tel"
-                          name="phone"
-                          value={fields.phone}
-                          onChange={handleChange}
-                          required
-                          placeholder="05XX XXX XX XX"
-                          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        E-posta
+                <form onSubmit={handleSubmit} noValidate>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        Adınız Soyadınız *
                       </label>
                       <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={fields.email}
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={fields.name}
                         onChange={handleChange}
-                        placeholder="ornek@email.com"
+                        required
+                        placeholder="Ahmet Yılmaz"
                         className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors"
                       />
+                      {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
                     </div>
-
-                    <div className="mb-4">
-                      <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                        Hangi Hizmet?
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                        Telefon *
                       </label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={fields.service}
+                      <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        value={fields.phone}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors bg-white"
-                      >
-                        <option value="">Seçiniz...</option>
-                        {serviceOptions.map((opt) => (
-                          <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="mb-6">
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                        Mesajınız
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={fields.message}
-                        onChange={handleChange}
-                        rows={4}
-                        placeholder="Hangi oda için, kaç pencere, özel isteğiniz var mı?"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors resize-none"
+                        required
+                        placeholder="05XX XXX XX XX"
+                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors"
                       />
+                      {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
                     </div>
+                  </div>
 
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full bg-[#1A2E4A] text-white py-4 rounded-xl font-bold text-base hover:bg-[#243d5e] transition-colors disabled:opacity-60"
-                    >
-                      {loading ? 'Gönderiliyor...' : '📩 Ücretsiz Keşif İste'}
-                    </button>
-                  </form>
-                )}
+                  <div className="mb-6">
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      Mesajınız
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={fields.message}
+                      onChange={handleChange}
+                      rows={4}
+                      placeholder="Hangi oda için, kaç pencere, özel isteğiniz var mı?"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-green-500 text-white py-4 rounded-xl font-bold text-base hover:bg-green-600 transition-colors"
+                  >
+                    💬 WhatsApp ile Gönder
+                  </button>
+                </form>
               </div>
             </div>
           </div>
