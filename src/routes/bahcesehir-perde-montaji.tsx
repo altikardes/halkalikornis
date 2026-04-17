@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { buildFaqSchema } from '@/lib/seo-schema'
 
 const faqItems = [
   {
@@ -23,16 +24,6 @@ const faqItems = [
   },
 ]
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
-}
-
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -53,8 +44,8 @@ export const Route = createFileRoute('/bahcesehir-perde-montaji')({
       },
     ],
     scripts: [
-      { type: 'application/ld+json', children: JSON.stringify(faqSchema) },
-      { type: 'application/ld+json', children: JSON.stringify(localBusinessSchema) },
+      { id: 'faqpage-schema', type: 'application/ld+json', children: JSON.stringify(buildFaqSchema(faqItems)) },
+      { id: 'localbusiness-schema-bahcesehir', type: 'application/ld+json', children: JSON.stringify(localBusinessSchema) },
     ],
   }),
   component: BahcesehirPerdeMontajiPage,

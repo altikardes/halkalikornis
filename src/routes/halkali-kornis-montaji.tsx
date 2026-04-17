@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { buildFaqSchema } from '@/lib/seo-schema'
 
 const faqItems = [
   {
@@ -22,19 +23,6 @@ const faqItems = [
       'Evet, montaj sonrası kullanım ve ayar desteği veriyoruz. Gerekli durumlarda kontrol için tekrar ziyaret planlayarak sistemin sorunsuz çalışmasını sağlıyoruz.',
   },
 ]
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
-  })),
-}
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -63,10 +51,12 @@ export const Route = createFileRoute('/halkali-kornis-montaji')({
     ],
     scripts: [
       {
+        id: 'faqpage-schema',
         type: 'application/ld+json',
-        children: JSON.stringify(faqSchema),
+        children: JSON.stringify(buildFaqSchema(faqItems)),
       },
       {
+        id: 'localbusiness-schema-halkali',
         type: 'application/ld+json',
         children: JSON.stringify(localBusinessSchema),
       },
