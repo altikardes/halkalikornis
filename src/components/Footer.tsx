@@ -69,6 +69,11 @@ export function Footer() {
                   <span>✉️</span> info@halkalikornis.com.tr
                 </a>
               </li>
+              <li>
+                <a href="https://instagram.com/perdeusta75" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-blue-200 hover:text-white no-underline">
+                  <span>📸</span> Instagram'da İncele
+                </a>
+              </li>
             </ul>
           </div>
         </div>

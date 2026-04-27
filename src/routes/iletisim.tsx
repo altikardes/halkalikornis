@@ -71,18 +71,31 @@ function IletisimPage() {
   }
 
   return (
-    <div>
-      {/* Header */}
-      <div className="bg-[#1A2E4A] text-white py-16 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">İletişim</h1>
-          <p className="text-blue-200 text-lg">
-            Ücretsiz keşif randevusu almak veya fiyat teklifi almak için bize ulaşın.
+    <div className="bg-slate-50/50 selection:bg-blue-200 selection:text-blue-900">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#1A2E4A] to-[#2c4b7c] px-4 py-16 text-white md:py-24">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M0 32V0h32" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+          </svg>
+        </div>
+        <div className="relative mx-auto max-w-4xl text-center">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-blue-900/50 border border-blue-700/50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-200 backdrop-blur-sm shadow-sm">
+            <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span></span>
+            Hızlı ve Kesintisiz Destek
+          </p>
+          <h1 className="mb-6 text-4xl font-extrabold tracking-tight leading-tight md:text-5xl lg:text-6xl">İletişim</h1>
+          <p className="max-w-2xl mx-auto text-base leading-relaxed text-blue-100/90 md:text-lg">
+            Ücretsiz keşif, fiyat teklifi veya randevu oluşturmak için hemen ulaşın. Ekibimiz en kısa sürede dönüş sağlayacaktır.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="bg-[#F5F5F5] py-16 px-4">
+      <div className="px-4 py-16 md:py-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-5 gap-12">
 
@@ -90,18 +103,18 @@ function IletisimPage() {
             <div className="md:col-span-2 space-y-6">
               <h2 className="text-2xl font-bold text-[#1A2E4A]">Bize Ulaşın</h2>
 
-              <div className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm">
+              <div className="group flex items-start gap-4 bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-blue-100">
                 <span className="text-3xl">📞</span>
                 <div>
                   <h3 className="font-bold text-[#1A2E4A] mb-1">Telefon</h3>
                   <a href="tel:+905309264830" className="text-blue-600 hover:text-blue-800 no-underline font-medium">
                     0530 926 48 30
                   </a>
-                  <p className="text-gray-400 text-xs mt-1">Pzt–Cmt: 08:00 – 19:00</p>
+                  <p className="text-gray-500 text-xs mt-1 transition-colors group-hover:text-blue-600">Pzt–Cmt: 08:00 – 19:00</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm">
+              <div className="group flex items-start gap-4 bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-green-100">
                 <span className="text-3xl">💬</span>
                 <div>
                   <h3 className="font-bold text-[#1A2E4A] mb-1">WhatsApp</h3>
@@ -113,11 +126,22 @@ function IletisimPage() {
                   >
                     WhatsApp ile Mesaj At
                   </a>
-                  <p className="text-gray-400 text-xs mt-1">7/24 mesaj bırakabilirsiniz</p>
+                  <p className="text-gray-500 text-xs mt-1 transition-colors group-hover:text-green-600">7/24 fotoğraf gönderebilirsiniz</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm">
+              <div className="group flex items-start gap-4 bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-pink-100">
+                <span className="text-3xl">📸</span>
+                <div>
+                  <h3 className="font-bold text-[#1A2E4A] mb-1">Instagram</h3>
+                  <a href="https://instagram.com/perdeusta75" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 no-underline font-medium">
+                    @perdeusta75
+                  </a>
+                  <p className="text-gray-500 text-xs mt-1 transition-colors group-hover:text-pink-600">Montaj örneklerimizi inceleyin</p>
+                </div>
+              </div>
+
+              <div className="group flex items-start gap-4 bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-blue-100">
                 <span className="text-3xl">✉️</span>
                 <div>
                   <h3 className="font-bold text-[#1A2E4A] mb-1">E-posta</h3>
@@ -127,22 +151,22 @@ function IletisimPage() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm">
+              <div className="group flex items-start gap-4 bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-blue-100">
                 <span className="text-3xl">📍</span>
                 <div>
                   <h3 className="font-bold text-[#1A2E4A] mb-1">Adres</h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-slate-600 text-sm">
                     Halkalı Merkez Mahallesi<br />
                     Küçükçekmece, İstanbul
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm">
+              <div className="group flex items-start gap-4 bg-white rounded-3xl p-6 shadow-md shadow-slate-200/40 border border-slate-100 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-blue-100">
                 <span className="text-3xl">🕐</span>
                 <div>
                   <h3 className="font-bold text-[#1A2E4A] mb-1">Çalışma Saatleri</h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-slate-600 text-sm">
                     Pazartesi – Cumartesi: 08:00 – 19:00<br />
                     Pazar: Randevuya göre
                   </p>
@@ -152,9 +176,9 @@ function IletisimPage() {
 
             {/* Contact Form */}
             <div className="md:col-span-3">
-              <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-[#1A2E4A] mb-2">WhatsApp ile Hızlı Keşif Talebi</h2>
-                <p className="text-gray-500 text-sm mb-6">Ad Soyad ve telefon bilginizi girin, sizi doğrudan WhatsApp ekranına yönlendirelim.</p>
+              <div className="bg-white rounded-[2rem] p-8 shadow-xl shadow-slate-200/40 border border-slate-100 h-full">
+                <h2 className="text-2xl font-bold text-slate-900 mb-2">Hızlı Keşif Talebi</h2>
+                <p className="text-slate-500 text-sm mb-8">Ad Soyad ve iletişim bilginizi girin, sizi doğrudan WhatsApp destek hattımıza yönlendirelim.</p>
 
                 <form onSubmit={handleSubmit} noValidate>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -170,7 +194,7 @@ function IletisimPage() {
                         onChange={handleChange}
                         required
                         placeholder="Ahmet Yılmaz"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors"
+                        className="w-full border border-slate-200 bg-slate-50/50 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                       />
                       {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
                     </div>
@@ -186,7 +210,7 @@ function IletisimPage() {
                         onChange={handleChange}
                         required
                         placeholder="05XX XXX XX XX"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors"
+                        className="w-full border border-slate-200 bg-slate-50/50 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                       />
                       {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone}</p>}
                     </div>
@@ -203,13 +227,13 @@ function IletisimPage() {
                       onChange={handleChange}
                       rows={4}
                       placeholder="Hangi oda için, kaç pencere, özel isteğiniz var mı?"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1A2E4A] transition-colors resize-none"
+                      className="w-full border border-slate-200 bg-slate-50/50 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-green-500 text-white py-4 rounded-xl font-bold text-base hover:bg-green-600 transition-colors"
+                    className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-4 rounded-xl font-bold text-base hover:scale-[1.02] hover:shadow-lg transition-all"
                   >
                     💬 WhatsApp ile Gönder
                   </button>
@@ -219,13 +243,12 @@ function IletisimPage() {
           </div>
 
           {/* Map */}
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold text-[#1A2E4A] mb-6 text-center">Konum</h2>
-            <div className="rounded-2xl overflow-hidden shadow-md">
+          <div className="mt-16">
+            <div className="rounded-3xl overflow-hidden shadow-xl shadow-slate-200/40 border border-slate-100 relative h-[400px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96093.30635023508!2d28.872160!3d41.008240!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4f48e5c3f03%3A0x7e7bb8d72d59acd3!2sHalkali%2C%20Istanbul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
                 width="100%"
-                height="400"
+                height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
