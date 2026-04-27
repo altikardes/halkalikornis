@@ -17,12 +17,21 @@ export const Route = createFileRoute('/hizmetler')({
 })
 
 const serviceImages: Record<string, string> = {
-  'perde-montaji': 'https://images.unsplash.com/photo-1589834390005-5d4fb9bf3d32?auto=format&fit=crop&q=80&w=800',
-  'kornis-montaji': 'https://images.unsplash.com/photo-1534398079543-7ae6d016b86c?auto=format&fit=crop&q=80&w=800',
-  'stor-perde': 'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=800',
-  'jaluzi': 'https://images.unsplash.com/photo-1528318269466-69fc65070a2b?auto=format&fit=crop&q=80&w=800',
-  'tul-perde': 'https://images.unsplash.com/photo-1522771731478-446370ba05b9?auto=format&fit=crop&q=80&w=800',
-  'zebra-perde': 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
+  'perde-montaji': '/images/services/perde-montaji.png',
+  'kornis-montaji': '/images/services/kornis-montaji.png',
+  'stor-perde': '/images/services/stor-perde.png',
+  'jaluzi': '/images/services/jaluzi.png',
+  'tul-perde': '/images/services/tul-perde.png',
+  'zebra-perde': '/images/services/zebra-perde.png',
+}
+
+const serviceFallbackImages: Record<string, string> = {
+  'perde-montaji': '/placeholder.png',
+  'kornis-montaji': '/placeholder.png',
+  'stor-perde': '/placeholder.png',
+  'jaluzi': '/placeholder.png',
+  'tul-perde': '/placeholder.png',
+  'zebra-perde': '/placeholder.png',
 }
 
 function HizmetlerPage() {
@@ -62,7 +71,17 @@ function HizmetlerPage() {
               >
                 <div className="h-56 overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent z-10" />
-                  <img src={serviceImages[service.id] || serviceImages['perde-montaji']} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <img
+                    src={serviceImages[service.id] || serviceImages['perde-montaji']}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    onError={(event) => {
+                      const img = event.currentTarget
+                      img.onerror = null
+                      img.src = serviceFallbackImages[service.id] || serviceFallbackImages['perde-montaji']
+                    }}
+                  />
                   <h2 className="absolute bottom-4 left-6 z-20 text-2xl font-bold text-white tracking-tight">{service.title}</h2>
                 </div>
                 <div className="p-6 md:p-8">

@@ -17,7 +17,7 @@ export const Route = createFileRoute('/urunler')({
 const productCategories = [
   {
     name: 'Modern Perdeler',
-    image: 'https://images.unsplash.com/photo-1589834390005-5d4fb9bf3d32?auto=format&fit=crop&q=80&w=1200',
+    image: '/images/services/tul-perde.png',
     products: [
       {
         name: 'Zebra Perde',
@@ -39,7 +39,7 @@ const productCategories = [
   },
   {
     name: 'Jaluziler',
-    image: 'https://images.unsplash.com/photo-1528318269466-69fc65070a2b?auto=format&fit=crop&q=80&w=1200',
+    image: '/images/services/jaluzi.png',
     products: [
       { name: 'Alüminyum Jaluzi', desc: 'Uzun ömürlü, dayanıklı ve ince şeritli yapısıyla özellikle ofis ortamlarına profesyonel bir şıklık katan jaluziler.' },
       { name: 'Ahşap Jaluzi', desc: 'Gerçek ahşabın verdiği organik ve sıcak his ile yaşam alanlarına değer katan, dekoratif ve lüks jaluzi sistemleri.' },
@@ -49,7 +49,7 @@ const productCategories = [
   },
   {
     name: 'Korniş & Askı Sistemleri',
-    image: 'https://images.unsplash.com/photo-1534398079543-7ae6d016b86c?auto=format&fit=crop&q=80&w=1200',
+    image: '/images/services/kornis-montaji.png',
     products: [
       { name: 'Ahşap & Rustik Korniş', desc: 'Kumaş perdelerinizi görsel olarak destekleyen ve estetiği yukarı taşıyan, dekoratif başlıklı ahşap veya metal borular.' },
       { name: 'Metal Ray Sistemleri', desc: 'Ağır fon perdelerini sorunsuz taşıyan, zamanla esneme veya sarkma yapmayan, endüstriyel kalitede çelik/alüminyum raylar.' },
